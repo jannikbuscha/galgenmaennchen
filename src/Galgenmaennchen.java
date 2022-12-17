@@ -1,4 +1,3 @@
-
 import java.awt.*;
 import java.awt.event.*;
 import java.util.concurrent.*;
@@ -7,34 +6,32 @@ import javax.swing.*;
 import javax.swing.UIManager.*;
 
 /*
- * @Autoren: Jannik Buscha & Emre Aydin
- * @Informationen: Erstellt in NetBeans IDE 8.2, ~330 Zeilen Code, ~200 Zeilen generiert von NetBeans &&|| NetBeans Swing Builder
- * @Inhaltsverzeichniss: 1. Wort Array, 2. Die "Main" Methode, 3. Spiel starten, 4. Spiel neustart, 5. Das "Herz­stück", 6. Generierter Code
- * @Weitere Vorhaben die wir nicht geschafft haben: Sprachauswahl im 2D-Array, Verschiedene Schwierigkeiten, Multiplayer (mit Abwechslungsprinzip)
+ * @ Informationen: Erstellt in NetBeans IDE 8.2, ~330 Zeilen Code, ~200 Zeilen generiert vom NetBeans-Swing-Builder.
+ * @ Inhaltsverzeichnis: 1. Wort Array, 2. Der Konstruktor, 3. Spiel starten, 4. Spiel neustart, 5. Das "Herzstück", 6. Generierter Code
+ * @ Weitere Vorhaben, die nicht geschafft wurden: Sprachauswahl im 2D-Array, Verschiedene Schwierigkeiten, Multiplayer (mit Abwechslungsprinzip)
  */
 
-public class Galgenmaennchen extends JFrame { //Sorgt dafür das die Klasse die damit deklaiert wird, die Methoden der externen-Klasse enthält.
+public class Galgenmaennchen extends JFrame { //Sorgt dafür, dass die Klasse, die damit deklariert wird, die Methoden der externen-Klasse enthält.
 
     /*
      * 1. Wort Array
-     * Hier wird die Array mit den jeweiligen Wörtern erstellt.
+     * Hier wird der Array mit den jeweiligen Wörtern erstellt.
      */
     private String[] woerter = {
-        "griff", "archaeologisch", "tropen", "menschheit", "mathematik", "schnauze", "galleone", "mitternacht", "ruecksichtslos", "leichtsinnig", "hyperventilieren", "chemikalien", "substantiv", "schere", "tage", "abschluss", "pferd", "dermatologe", "dreieck", "wochentag", "klassenfahrt", "vorfahrtstrasse", "berichterstattung", "leichenwagen", "flughoernchen", "seilbahn", "mitternachtsparty", "schlumpfhausen", "ergonomisch", "lamborghini", "vielseitig", "krankheitsgefahr", "verkehrsregeln", "mainboard", "grafikeinheit", "gehaeuseluefter", "schraubenzieher", "festplattenverschleiss", "grundausstattung", "herzinfarkt", "katastrophe", "wahrscheinlichkeitsrechnung", "krasavice", "hauptversorgung", "anomalie", "kanackenbaum", "russenhocke", "flohmarkt", "monockel", "nahrungsmittelunvertraelichkeit"
+            "griff", "archaeologisch", "tropen", "menschheit", "mathematik", "schnauze", "galleone", "mitternacht", "ruecksichtslos", "leichtsinnig", "hyperventilieren", "chemikalien", "substantiv", "schere", "tage", "abschluss", "pferd", "dermatologe", "dreieck", "wochentag", "klassenfahrt", "vorfahrtstrasse", "berichterstattung", "leichenwagen", "flughoernchen", "seilbahn", "mitternachtsparty", "schlumpfhausen", "ergonomisch", "lamborghini", "vielseitig", "krankheitsgefahr", "verkehrsregeln", "mainboard", "grafikeinheit", "gehaeuseluefter", "schraubenzieher", "festplattenverschleiss", "grundausstattung", "herzinfarkt", "katastrophe", "wahrscheinlichkeitsrechnung", "krasavice", "hauptversorgung", "anomalie", "kanackenbaum", "russenhocke", "flohmarkt", "monockel", "nahrungsmittelunvertraelichkeit"
     };
 
-    private static String statischesWort; //Statische variable die das wort enthällt.
-    private static int versuche = 5; //Maximale versuche.
+    private static String statischesWort; //Statische Variable, die das Wort enthält.
+    private static int versuche = 5; //Maximale Versuche.
     private char buchstabe; //Eingegebener Buchstabe.
-    
-    //Buchstaben speicherung.
+
+    //Buchstaben Speicherung.
     String verwendeteBuchstaben;
     String grafik = "" + versuche;
 
     /*
-     * 2. Die "Main" Methode
-     * Hier wird eine Methode erstellt in der der Teil vom Generiert Code und des Spiels enthalten ist.
-     * außerdem sind hier noch die Events und alles zusammen wird später in der richtigen Main Methode aufgerufen.
+     * 2. Der Konstruktor
+     * Hier werden der Teil vom generierten Code und die Logik des Spieles aufgerufen.
      */
     public Galgenmaennchen() {
         initComponents();
@@ -59,11 +56,11 @@ public class Galgenmaennchen extends JFrame { //Sorgt dafür das die Klasse die 
 
     /*
      * 3. Spiel starten
-     * Hier wird das Spiel gestartet. Hier wird ein Zufälliges Wort aus dem Array ausgewählt und die Komponente werden richtig angeordnet.
+     * Hier wird das Spiel gestartet. Hier wird ein zufälliges Wort aus dem Array ausgewählt und die Komponente werden richtig angeordnet.
      */
     private void starteSpiel() {
         this.versuche = 5;
-        
+
         statischesWort = verwendeteBuchstaben = "";
 
         this.maennchen.setText("");
@@ -75,12 +72,12 @@ public class Galgenmaennchen extends JFrame { //Sorgt dafür das die Klasse die 
         //Entfernt verstecktes Wort.
         this.verstecktesWortLabel.setText("");
 
-        //Wählt ein zufälliges Wort aus der Array.
+        //Wählt ein zufälliges Wort aus Array.
         int zufaellig = ThreadLocalRandom.current().nextInt(0, woerter.length);
         statischesWort = woerter[zufaellig];
 
         System.out.println(statischesWort);
-        
+
         for (int i = 0; i < this.statischesWort.length(); i++) {
             this.verstecktesWortLabel.setText(this.verstecktesWortLabel.getText() + "*");
         }
@@ -88,51 +85,51 @@ public class Galgenmaennchen extends JFrame { //Sorgt dafür das die Klasse die 
 
     /*
      * 4. Spiel neustart
-     * Hier wird ganz einfach das Spiel neugestartet.
+     * Hier wird das Spiel neu gestartet.
      */
     private void spielNeustart() {
         this.maennchen.setIcon(null);
-        
+
         starteSpiel();
     }
-    
+
     /*
-     * 5. Das "Herz­stück"
-     * Das Das "Herz­stück" genannt, da sich alles wichtige in dieser Methode befindet. Größtenteils Fehlerabsicherungen, Komponenten anordnungen
+     * 5. Das "Herzstück"
+     * Das "Herzstück", da sich alles Wichtige in dieser Methode befindet. Größtenteils Fehlerabsicherungen, Komponenten Anordnungen,
      * aber auch die Zeichnung des Galgenmännchens.
      */
     private void buchstabe() {
-        //Check ob der Textfeld ein char beinhaltet & ob dieser ein Buchstabe ist.
+        //Check, ob das Textfeld ein char beinhaltet und ob dieser ein Buchstabe ist.
         if (!this.textFeld.getText().isEmpty() && (this.textFeld.getText().matches("[a-zA-Z]"))) {
             //Konvertiert den Buchstaben zum char.
             this.buchstabe = this.textFeld.getText().charAt(0);
-            
+
             int buchstabenOrt = statischesWort.indexOf(buchstabe);
-            
-            if (buchstabenOrt == -1) { //eingegebener Buchstabe ist nicht im gesuchten Wort
+
+            if (buchstabenOrt == -1) { //Eingegebener Buchstabe ist nicht im gesuchten Wort
                 if (this.verwendeteBuchstaben.indexOf(this.buchstabe) == -1) { //Buchstabe ist noch nie zuvor eingegeben worden.
-                    this.verwendeteBuchstaben += this.buchstabe + ", "; //Buchstabe wird in die "Liste" an bereits eingegebenen Buchstaben hinzugefügt .
+                    this.verwendeteBuchstaben += this.buchstabe + ", "; //Buchstabe wird in die "Liste" an bereits eingegebenen Buchstaben hinzugefügt.
                 }
                 this.meldungLabel.setText("Buchstabe '" + this.buchstabe + "' ist falsch!");
                 this.meldungLabel.setVisible(true);
-                this.eingegebeWoerterLabel.setText("Bereits benutzte Buchstaben: " + verwendeteBuchstaben.substring(0, verwendeteBuchstaben.length() - 2)); // ', ' wird vom Stringende entfernt (optische Gründe) und dann angezeigt.
+                this.eingegebeWoerterLabel.setText("Bereits benutzte Buchstaben: " + verwendeteBuchstaben.substring(0, verwendeteBuchstaben.length() - 2)); //', ' wird vom String-Ende entfernt (optische Gründe) und dann angezeigt.
                 this.versuche--; //Reduziert die Leben.
                 this.versucheLabel.setText("Versuche: " + versuche); //Zeigt die Leben an.
-                grafik = "grafik" + versuche;  //Ändert den Path zum neuen Galgenmänchen Bild.
-                ImageIcon maennchenBild = new ImageIcon(getClass().getResource("grafiken/" + grafik + ".png")); //Lädt das Bild des Galgenmänchens aus den Resourcen.
-                this.maennchen.setIcon(maennchenBild); //Übergibt das Bild zum zeichnen.
+                grafik = "grafik" + versuche;  //Ändert den Path zum neuen Galgenmännchen Bild.
+                ImageIcon maennchenBild = new ImageIcon(getClass().getResource("grafiken/" + grafik + ".png")); //Lädt das Bild des Galgenmännchens.
+                this.maennchen.setIcon(maennchenBild); //Übergibt das Bild zum Zeichnen.
             } else { //Eingegebener Buchstabe ist im gesuchten Wort.
                 String entdecktesWort = this.verstecktesWortLabel.getText();
-                String benutzteCharakter = statischesWort; //Temp variable in der wir das gesuchte wort speichern.
+                String benutzteCharakter = statischesWort; //Temp-Variable, in der das gesuchte Wort gespeichert wird.
                 for (int i = 0; i < benutzteCharakter.length(); i++) {
                     char c = benutzteCharakter.charAt(i);
                     if (c == buchstabe) {
                         buchstabenOrt = benutzteCharakter.indexOf(c); //Den buchstabenOrt aktualisieren.
                         entdecktesWort = entdecktesWort.substring(0, buchstabenOrt) //Den Buchstaben im versteckten Wort enthüllen.
-                        + this.buchstabe
-                        + entdecktesWort.substring(buchstabenOrt + 1);
-                        benutzteCharakter = benutzteCharakter.replaceFirst(String.valueOf(c), "#"); //In unserer temp variable ein Puffer Buchstaben einfügen um auch folgende Buchstaben anzusteuern.
-                    } 
+                                + this.buchstabe
+                                + entdecktesWort.substring(buchstabenOrt + 1);
+                        benutzteCharakter = benutzteCharakter.replaceFirst(String.valueOf(c), "#"); //In Temp-Variable ein Puffer Buchstaben einfügen, um auch folgende Buchstaben anzusteuern.
+                    }
                 }
                 this.verstecktesWortLabel.setText(entdecktesWort);
                 this.meldungLabel.setText("");
@@ -152,8 +149,8 @@ public class Galgenmaennchen extends JFrame { //Sorgt dafür das die Klasse die 
                 meldungLabel.setForeground(new Color(255, 0, 0));
                 return;
             }
-            
-            //Check ob das Wort richtig ist.
+
+            //Check, ob das Wort richtig ist.
             if (this.verstecktesWortLabel.getText().equals(statischesWort)) {
                 this.meldungLabel.setText("Du hast gewonnen!");
                 this.meldungLabel.setVisible(true);
@@ -170,7 +167,7 @@ public class Galgenmaennchen extends JFrame { //Sorgt dafür das die Klasse die 
 
     /*
      * 6. Generierter Code
-     * Hier befindet sich der Generierter Code von NetBeans &&|| NetBeans Swing Builder. Der Code lässt sich zudem nur über den Builder abändern.
+     * Hier befindet sich der generierte Code vom NetBeans-Swing-Builder.
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -267,12 +264,12 @@ public class Galgenmaennchen extends JFrame { //Sorgt dafür das die Klasse die 
         javax.swing.GroupLayout labelHintergrundLayout = new javax.swing.GroupLayout(labelHintergrund);
         labelHintergrund.setLayout(labelHintergrundLayout);
         labelHintergrundLayout.setHorizontalGroup(
-            labelHintergrundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 650, Short.MAX_VALUE)
+                labelHintergrundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 650, Short.MAX_VALUE)
         );
         labelHintergrundLayout.setVerticalGroup(
-            labelHintergrundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
+                labelHintergrundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 40, Short.MAX_VALUE)
         );
 
         galgenmaennchenPane.add(labelHintergrund);
@@ -287,17 +284,17 @@ public class Galgenmaennchen extends JFrame { //Sorgt dafür das die Klasse die 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(galgenmaennchenPane, javax.swing.GroupLayout.DEFAULT_SIZE, 640, Short.MAX_VALUE)
-                .addGap(0, 0, 0))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, 0)
+                                .addComponent(galgenmaennchenPane, javax.swing.GroupLayout.DEFAULT_SIZE, 640, Short.MAX_VALUE)
+                                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(galgenmaennchenPane, javax.swing.GroupLayout.DEFAULT_SIZE, 664, Short.MAX_VALUE)
-                .addGap(0, 0, 0))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(galgenmaennchenPane, javax.swing.GroupLayout.DEFAULT_SIZE, 664, Short.MAX_VALUE)
+                                .addGap(0, 0, 0))
         );
 
         pack();
@@ -320,7 +317,7 @@ public class Galgenmaennchen extends JFrame { //Sorgt dafür das die Klasse die 
             for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     UIManager.setLookAndFeel(info.getClassName());
-                    break; //Setzt ein Theme fest.
+                    break; //Setzt ein Theme.
                 }
             }
         } catch (ClassNotFoundException ex) {
